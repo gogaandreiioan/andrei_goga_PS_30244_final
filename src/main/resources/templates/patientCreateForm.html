@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Creation Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Insert Patient Data</h1>
+<form action="#" th:action="@{/patientCreateForm}" th:object="${patientDto}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Personal Number:</td>
+            <td><input type="text" th:field="*{personalNumber}" /></td>
+            <td th:if="${#fields.hasErrors('personalNumber')}" th:errors="*{personalNumber}">Personal Number Error</td>
+        </tr>
+        <tr>
+            <td>Identity Number:</td>
+            <td><input type="text" th:field="*{identityNumber}" /></td>
+            <td th:if="${#fields.hasErrors('identityNumber')}" th:errors="*{identityNumber}">Identity Error</td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><input type="text" th:field="*{address}" /></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
+        </tr>
+        <tr>
+            <td>Date Of Birth:</td>
+            <td><input type="date" th:field="*{dateOfBirth}" /></td>
+            <td th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Date Of Birth Error</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+        </tr>
+    </table>
+</form>
+
+<form action="#" th:action="@{/goSecretaryHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
+</form>
+<div id="snackbar"></div>
+
+</body>
+</html>

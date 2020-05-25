@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Find Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Patients</h1>
+
+<table>
+    <tbody>
+    <th>
+    <td>Name</td>
+    <td>Address</td>
+    <td>Personal Number</td>
+    <td>Identity Number</td>
+    <td>Date Of Birth</td>
+
+    </th>
+    <tr th:each="patient : ${ patientDtoList }">
+        <td th:text="${ patient.name}">Name</td>
+        <td th:text="${ patient.address}">Address</td>
+        <td th:text="${ patient.personalNumber}">Personal Number</td>
+        <td th:text="${ patient.identityNumber }">Identity Number</td>
+        <td th:text="${ patient.dateOfBirth }">Date Of Birth</td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/goSecretaryHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goSecretaryHome" />
+</form>
+<div id="snackbar"></div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Find Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Found User</h1>
+
+<table>
+    <tbody>
+    <th>
+    <td>Email</td>
+    <td>Username</td>
+    <td>Password</td>
+    <td>Role</td>
+    </th>
+    <tr th:each="user : ${ userDtoList }">
+        <td th:text="${ user.email}">Email</td>
+        <td th:text="${ user.username }">Username</td>
+        <td th:text="${ user.password }">Password</td>
+        <td th:text="${ user.role }">Role</td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/goAdminHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+</body>
+</html>

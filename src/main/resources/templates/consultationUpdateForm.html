@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Consultation Creation Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/doctor.js"></script>
+</head>
+<body>
+<h1>Insert Consultation Data</h1>
+<form action="#" th:action="@{/consultationUpdateForm}" th:object="${consultationDto}" method="post">
+    <table>
+        <tr>
+            <td>Doctor Name:</td>
+            <td><input type="text" th:field="*{doctor.username}" /></td>
+            <td th:if="${#fields.hasErrors('doctor')}" th:errors="*{doctor}">Doctor Error</td>
+        </tr>
+        <tr>
+            <td>Patient Personal Number:</td>
+            <td><input type="text" th:field="*{patient.personalNumber}" /></td>
+            <td th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}">Personal Number Error</td>
+        </tr>
+        <tr>
+            <td>Date Of Consultation:</td>
+            <td><input type="date" th:field="*{dateOfConsultation}" /></td>
+            <td th:if="${#fields.hasErrors('dateOfConsultation')}" th:errors="*{dateOfConsultation}">Date Of Consultation Error</td>
+        </tr>
+        <tr>
+            <td>Description to Add:</td>
+            <td><input type="text" th:field="*{description}" /></td>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+        </tr>
+    </table>
+</form>
+
+<form action="#" th:action="@{/goDoctorHome}" method="get">
+    <p><input type="submit" id="goHome" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th width="20%">Patient Name</th>
+                    <th width="20 %">Doctor Name</th>
+                    <th width="60%">Date</th>
+                </tr>
+                </thead>
+                <tbody id="messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="snackbar"></div>
+
+</body>
+</html>

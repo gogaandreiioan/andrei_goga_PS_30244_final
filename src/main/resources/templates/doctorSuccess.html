@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Success!</title>
+        <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/main.css" rel="stylesheet">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="/chat.js"></script>
+    </head>
+<h1>Success!</h1>
+<body>
+
+<form action="#" th:action="@{/doctorHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goDoctorHome" />
+</form>
+<div id="snackbar"></div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WebSocket Chat</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/doctor.js"></script>
+    <title>Find Consultations Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Insert Patient Data</h1>
+<form action="#" th:action="@{/findConsultations}" th:object="${patientDto}" method="post">
+    <table>
+        <tr>
+            <td>Personal Number:</td>
+            <td><input type="text" th:field="*{personalNumber}" /></td>
+            <td th:if="${#fields.hasErrors('personalNumber')}" th:errors="*{personalNumber}">Personal Number Error</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+        </tr>
+    </table>
+</form>
+
+<form action="#" th:action="@{/goSecretaryHome}" method="get">
+    <p><input type="submit" id="goHome" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th width="20%">Patient Name</th>
+                    <th width="20 %">Doctor Name</th>
+                    <th width="60%">Date</th>
+                </tr>
+                </thead>
+                <tbody id="messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="snackbar"></div>
+
+</body>
+</html>

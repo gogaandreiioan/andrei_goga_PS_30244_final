@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Found Consultations</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <tbody>
+    <th>
+    <td>Doctor Name</td>
+    <td>Patient Name</td>
+    <td>Date</td>
+    <td>Description</td>
+    </th>
+    <tr th:each="consultation : ${ consultationDtoList }">
+        <td th:text="${ consultation.getDoctor().getUsername() }">Doctor Name</td>
+        <td th:text="${ consultation.getPatient().getName()}">Patient Name</td>
+        <td th:text="${ consultation.getDateOfConsultation()}">Date</td>
+        <td th:text="${ consultation.getDescription()}">Date</td>
+    </tr>
+
+    </tbody>
+</table>
+<div id="snackbar"></div>
+
+</body>
+</html>

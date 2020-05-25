@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Consultation Creation Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/secretary.js"></script>
+</head>
+<body>
+<h1>Insert Consultation Data</h1>
+<form action="#" th:action="@{/consultationCreateForm}" th:object="${consultationDto}" method="post">
+    <table>
+        <tr>
+            <td>Doctor Name:</td>
+            <td><input type="text" id="doctorUsername" th:field="*{doctor.username}" /></td>
+            <td th:if="${#fields.hasErrors('doctor')}" th:errors="*{doctor}">Doctor Error</td>
+        </tr>
+        <tr>
+            <td>Patient Personal Number:</td>
+            <td><input type="text" id="patientPersonalNumber" th:field="*{patient.personalNumber}" /></td>
+            <td th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}">Personal Number Error</td>
+        </tr>
+        <tr>
+            <td>Date Of Consultation:</td>
+            <td><input type="date" id="dateOfConsultation" th:id="dateOfConsultation" th:field="*{dateOfConsultation}" /></td>
+            <td th:if="${#fields.hasErrors('dateOfConsultation')}" th:errors="*{dateOfConsultation}">Date Of Consultation Error</td>
+        </tr>
+        <tr>
+            <td><input id="create" type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+        </tr>
+    </table>
+</form>
+
+<form action="#" th:action="@{/goSecretaryHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+<div id="snackbar"></div>
+
+</body>
+</html>

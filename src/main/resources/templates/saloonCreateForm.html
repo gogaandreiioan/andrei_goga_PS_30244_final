@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Saloon Creation Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1>Insert Saloon Data</h1>
+<form action="#" th:action="@{/saloonCreateForm}" th:object="${saloonDto}" method="post">
+    <table>
+        <tr>
+            <td>Saloon Number:</td>
+            <td><input type="text" id="saloonNumber" th:field="*{number}" /></td>
+            <td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Invalid Saloon Number!</td>
+        </tr>
+        <tr>
+            <td>Number of Beds:</td>
+            <td><input type="text" id="saloonNumberOfBeds" th:field="*{noOfBeds}" /></td>
+            <td th:if="${#fields.hasErrors('noOfBeds')}" th:errors="*{noOfBeds}">Invalid Number of Beds!</td>
+        </tr>
+        <tr>
+            <td><input id="create" type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+        </tr>
+    </table>
+</form>
+
+<form action="#" th:action="@{/goAdminHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+</body>
+</html>

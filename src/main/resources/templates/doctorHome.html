@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WebSocket Chat</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/doctor.js"></script>
+</head>
+
+<body>
+<form action="#" th:action="@{/seeHistory}" method="GET">
+    <p><input type="submit" id="seeHistory" class="button" value="See Past Consultations" name="seeHistory" />
+</form>
+
+<form action="#" th:action="@{/addConsultationDescription}" method="GET">
+    <p><input type="submit" id="addConsultationDescription" class="button" value="Add Consultation Details" name="addConsultationDescription" />
+</form>
+
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th width="20%">Patient Name</th>
+                    <th width="20 %">Doctor Name</th>
+                    <th width="60%">Date</th>
+                </tr>
+                </thead>
+                <tbody id="messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="snackbar"></div>
+
+</body>
+</html>
